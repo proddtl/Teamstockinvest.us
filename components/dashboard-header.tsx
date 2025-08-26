@@ -1,5 +1,4 @@
 import { LogoutButton } from "@/components/logout-button"
-import { AdminNavButton } from "@/components/admin-nav-button"
 
 interface DashboardHeaderProps {
   userName: string
@@ -29,7 +28,6 @@ export function DashboardHeader({ userName }: DashboardHeaderProps) {
             />
           </svg>
         </div>
-        <AdminNavButton />
         <LogoutButton />
       </div>
     </div>
