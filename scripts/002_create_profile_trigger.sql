@@ -6,13 +6,12 @@ security definer
 set search_path = public
 as $$
 begin
-  insert into public.profiles (id, email, first_name, last_name, balance)
+  insert into public.profiles (id, email, first_name, last_name)
   values (
     new.id,
     new.email,
     coalesce(new.raw_user_meta_data ->> 'first_name', ''),
-    coalesce(new.raw_user_meta_data ->> 'last_name', ''),
-    62800.00  -- Default balance matching the original design
+    coalesce(new.raw_user_meta_data ->> 'last_name', '')
   )
   on conflict (id) do nothing;
   
