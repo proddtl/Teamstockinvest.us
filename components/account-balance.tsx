@@ -2,7 +2,7 @@ interface AccountBalanceProps {
   balance: number
 }
 
-export function AccountBalance({ balance }: AccountBalanceProps) {
+export function AccountBalance({ 1 }: AccountBalanceProps) {
   return (
     <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 text-white mb-6 relative overflow-hidden">
       {/* Background decoration */}
