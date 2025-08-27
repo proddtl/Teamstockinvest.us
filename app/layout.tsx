@@ -4,8 +4,6 @@ import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
-import { Analytics } from "@vercel/analytics/react"
-import { Suspense } from "react"
 
 export const metadata: Metadata = {
   title: "v0 App",
@@ -22,10 +20,7 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
       <body>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <Suspense fallback={null}>
-            {children}
-            <Analytics />
-          </Suspense>
+          {children}
         </ThemeProvider>
       </body>
     </html>
