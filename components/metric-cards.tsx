@@ -1,93 +1,88 @@
-interface MetricCardsProps {
-  totalWithdraw: number
-  totalDeposit: number
-  totalInvest: number
-  currentInvest: number
-}
+interface MetricCardsProps {}
 
-export function MetricCards({ totalWithdraw, totalDeposit, totalInvest, currentInvest }: MetricCardsProps) {
+export function MetricCards({}: MetricCardsProps) {
   const metrics = [
-    {
-      title: "Total withdraw",
-      amount: totalWithdraw,
-      bgColor: "bg-gradient-to-br from-blue-500 to-blue-600",
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-          />
-        </svg>
-      ),
-    },
-    {
-      title: "Total deposit",
-      amount: totalDeposit,
-      bgColor: "bg-gradient-to-br from-green-500 to-green-600",
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      ),
-    },
-    {
-      title: "Total invest",
-      amount: totalInvest,
-      bgColor: "bg-gradient-to-br from-red-500 to-pink-500",
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-          />
-        </svg>
-      ),
-    },
-    {
-      title: "Current invest",
-      amount: currentInvest,
-      bgColor: "bg-gradient-to-br from-orange-500 to-orange-600",
-      icon: (
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-          />
-        </svg>
-      ),
-    },
-  ]
+      {
+            title: "Total withdraw",
+                  amount: 0, // You didn’t specify, so I left it at 0
+                        bgColor: "bg-gradient-to-br from-blue-500 to-blue-600",
+                              icon: (
+                                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                            strokeLinecap="round"
+                                                                        strokeLinejoin="round"
+                                                                                    strokeWidth={2}
+                                                                                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+                                                                                                          />
+                                                                                                                  </svg>
+                                                                                                                        ),
+                                                                                                                            },
+                                                                                                                                {
+                                                                                                                                      title: "Total deposit",
+                                                                                                                                            amount: 488.90,
+                                                                                                                                                  bgColor: "bg-gradient-to-br from-green-500 to-green-600",
+                                                                                                                                                        icon: (
+                                                                                                                                                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                                                                                                          <path
+                                                                                                                                                                                      strokeLinecap="round"
+                                                                                                                                                                                                  strokeLinejoin="round"
+                                                                                                                                                                                                              strokeWidth={2}
+                                                                                                                                                                                                                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                                                                                                                                                                                                    />
+                                                                                                                                                                                                                                            </svg>
+                                                                                                                                                                                                                                                  ),
+                                                                                                                                                                                                                                                      },
+                                                                                                                                                                                                                                                          {
+                                                                                                                                                                                                                                                                title: "Total invest",
+                                                                                                                                                                                                                                                                      amount: 21.00,
+                                                                                                                                                                                                                                                                            bgColor: "bg-gradient-to-br from-red-500 to-pink-500",
+                                                                                                                                                                                                                                                                                  icon: (
+                                                                                                                                                                                                                                                                                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                                                                                                                                                                                                                                    <path
+                                                                                                                                                                                                                                                                                                                strokeLinecap="round"
+                                                                                                                                                                                                                                                                                                                            strokeLinejoin="round"
+                                                                                                                                                                                                                                                                                                                                        strokeWidth={2}
+                                                                                                                                                                                                                                                                                                                                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+                                                                                                                                                                                                                                                                                                                                                              />
+                                                                                                                                                                                                                                                                                                                                                                      </svg>
+                                                                                                                                                                                                                                                                                                                                                                            ),
+                                                                                                                                                                                                                                                                                                                                                                                },
+                                                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                                                          title: "Current invest",
+                                                                                                                                                                                                                                                                                                                                                                                                amount: 7.00,
+                                                                                                                                                                                                                                                                                                                                                                                                      bgColor: "bg-gradient-to-br from-orange-500 to-orange-600",
+                                                                                                                                                                                                                                                                                                                                                                                                            icon: (
+                                                                                                                                                                                                                                                                                                                                                                                                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                                                                                                                                                                                                                                                                                                                                                              <path
+                                                                                                                                                                                                                                                                                                                                                                                                                                          strokeLinecap="round"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                      strokeLinejoin="round"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  strokeWidth={2}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </svg>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          },
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ]
 
-  return (
-    <div className="grid grid-cols-2 gap-4 mb-6">
-      {metrics.map((metric, index) => (
-        <div key={index} className={`${metric.bgColor} rounded-2xl p-4 text-white`}>
-          <div className="flex items-center justify-between mb-3">
-            <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">{metric.icon}</div>
-          </div>
-          <div className="space-y-1">
-            <p className="text-sm opacity-90">{metric.title}</p>
-            <p className="text-xl font-bold">
-              {metric.amount.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                minimumFractionDigits: 2,
-              })}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              return (
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <div className="grid grid-cols-2 gap-4 mb-6">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        {metrics.map((metric, index) => (
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div key={index} className={`${metric.bgColor} rounded-2xl p-4 text-white`}>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <div className="flex items-center justify-between mb-3">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">{metric.icon}</div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <div className="space-y-1">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <p className="text-sm opacity-90">{metric.title}</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <p className="text-xl font-bold">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                {metric.amount.toLocaleString("en-US", {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                style: "currency",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                currency: "USD",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                minimumFractionDigits: 2,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              })}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ))}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        )
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
