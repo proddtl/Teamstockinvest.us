@@ -1,109 +1,99 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useRouter } from "next/navigation"
+import { motion } from "framer-motion"
+import { X } from "lucide-react"
 
-interface WithdrawFormProps {
-  availableBalance: number
-}
+export default function WithdrawForm() {
+  const [btcAddress, setBtcAddress] = useState("")
+    const [amount, setAmount] = useState("")
+      const [showModal, setShowModal] = useState(false)
 
-export function WithdrawForm({ availableBalance }: WithdrawFormProps) {
-  const [amount, setAmount] = useState("")
-  const [description, setDescription] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
+        const handleWithdraw = (e: React.FormEvent) => {
+            e.preventDefault()
+                // Instead of processing, show unsuccessful modal
+                    setShowModal(true)
+                      }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError(null)
+                        return (
+                            <div className="bg-white p-6 rounded-2xl shadow-md relative">
+                                  {/* Withdrawal Form */}
+                                        <form onSubmit={handleWithdraw} className="space-y-4">
+                                                <div>
+                                                          <label className="block text-gray-700 font-medium mb-1">BTC Address</label>
+                                                                    <Input 
+                                                                                type="text"
+                                                                                            placeholder="Enter BTC address"
+                                                                                                        value={btcAddress}
+                                                                                                                    onChange={(e) => setBtcAddress(e.target.value)}
+                                                                                                                                required
+                                                                                                                                          />
+                                                                                                                                                  </div>
 
-    const withdrawAmount = Number.parseFloat(amount)
+                                                                                                                                                          <div>
+                                                                                                                                                                    <label className="block text-gray-700 font-medium mb-1">Amount</label>
+                                                                                                                                                                              <Input 
+                                                                                                                                                                                          type="number"
+                                                                                                                                                                                                      placeholder="Enter amount"
+                                                                                                                                                                                                                  value={amount}
+                                                                                                                                                                                                                              onChange={(e) => setAmount(e.target.value)}
+                                                                                                                                                                                                                                          required
+                                                                                                                                                                                                                                                    />
+                                                                                                                                                                                                                                                            </div>
 
-    if (withdrawAmount > availableBalance) {
-      setError("Insufficient funds")
-      setIsLoading(false)
-      return
-    }
+                                                                                                                                                                                                                                                                    <Button 
+                                                                                                                                                                                                                                                                              type="submit"
+                                                                                                                                                                                                                                                                                        className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold py-2 px-4 rounded-lg shadow hover:opacity-90 transition"
+                                                                                                                                                                                                                                                                                                >
+                                                                                                                                                                                                                                                                                                          Withdraw
+                                                                                                                                                                                                                                                                                                                  </Button>
+                                                                                                                                                                                                                                                                                                                        </form>
 
-    try {
-      const response = await fetch("/api/transactions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          type: "withdraw",
-          amount: withdrawAmount,
-          description: description || "Withdrawal",
-        }),
-      })
+                                                                                                                                                                                                                                                                                                                              {/* Popup Modal */}
+                                                                                                                                                                                                                                                                                                                                    {showModal && (
+                                                                                                                                                                                                                                                                                                                                            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                                                                                                                                                                                                                                                                                                                                                      <motion.div
+                                                                                                                                                                                                                                                                                                                                                                  initial={{ scale: 0.8, opacity: 0 }}
+                                                                                                                                                                                                                                                                                                                                                                              animate={{ scale: 1, opacity: 1 }}
+                                                                                                                                                                                                                                                                                                                                                                                          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                                                                                                                                                                                                                                                                                                                                                                                                      className="bg-white rounded-2xl shadow-lg p-6 max-w-md text-center relative"
+                                                                                                                                                                                                                                                                                                                                                                                                                >
+                                                                                                                                                                                                                                                                                                                                                                                                                            {/* Close Button */}
+                                                                                                                                                                                                                                                                                                                                                                                                                                        <button 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                      onClick={() => setShowModal(false)}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <X size={20} />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </button>
 
-      if (!response.ok) {
-        throw new Error("Failed to process withdrawal")
-      }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      {/* Animation Icon */}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <motion.div
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                initial={{ scale: 0 }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              animate={{ scale: 1 }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          className="mb-6 text-red-600 text-6xl"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ❌
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </motion.div>
 
-      router.push("/dashboard")
-    } catch (error) {
-      setError(error instanceof Error ? error.message : "An error occurred")
-    } finally {
-      setIsLoading(false)
-    }
-  }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {/* Message */}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h1 className="text-2xl font-bold mb-2">Withdrawal Unsuccessful</h1>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <p className="text-gray-600 mb-6">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  You cannot withdraw at this time because you have not reached your withdrawal limit.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </p>
 
-  return (
-    <div className="space-y-6">
-      <div className="bg-blue-50 p-4 rounded-lg">
-        <p className="text-sm text-blue-800">
-          Available Balance:{" "}
-          <span className="font-bold">
-            {availableBalance.toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD",
-            })}
-          </span>
-        </p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-2">
-          <Label htmlFor="amount">Amount</Label>
-          <Input
-            id="amount"
-            type="number"
-            step="0.01"
-            min="0.01"
-            max={availableBalance}
-            placeholder="0.00"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="description">Description (Optional)</Label>
-          <Input
-            id="description"
-            type="text"
-            placeholder="Enter description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-
-        {error && <p className="text-sm text-red-500">{error}</p>}
-
-        <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={isLoading || !amount}>
-          {isLoading ? "Processing..." : "Withdraw Funds"}
-        </Button>
-      </form>
-    </div>
-  )
-}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          {/* Close Modal Button */}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <Button
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    onClick={() => setShowModal(false)}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-2 rounded-lg shadow hover:opacity-90 transition"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              >
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Close
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </Button>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </motion.div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                )}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      )
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
