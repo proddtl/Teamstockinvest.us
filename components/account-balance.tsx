@@ -1,7 +1,7 @@
 interface AccountBalanceProps {}
 
 export function AccountBalance({}: AccountBalanceProps) {
-  const balance = 604.67;
+  const balance = 610.67;
 
     return (
         <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 text-white mb-6 relative overflow-hidden">
