@@ -20,9 +20,9 @@ export default async function DashboardPage() {
                       }
 
                         // Get user profile and account data
-                          const { data: profile } = await supabase.from("profiles").select("*").eq("id", user.id).single()
+                          const { data: profile, error: profileError } = await supabase.from("profiles").select("*").eq("id", user.id).single().catch(() => ({ data: null, error: true }))
 
-                            const { data: account } = await supabase.from("accounts").select("*").eq("user_id", user.id).single()
+                            const { data: account, error: accountError } = await supabase.from("accounts").select("*").eq("user_id", user.id).single().catch(() => ({ data: null, error: true }))
 
                               return (
                                   <div className="min-h-screen bg-gray-100 flex flex-col">
